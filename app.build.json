@@ -4,8 +4,8 @@
   "appName": "Rapider Restaurant Reservations & Table Management",
   "repository": "",
   "version": "1.0.0",
-  "lastBuildTimestamp": "2026-11-01T12:28:42.170Z",
-  "lastCommit": "uncommitted",
+  "lastBuildTimestamp": "2026-11-02T08:59:00.057Z",
+  "lastCommit": "715d3d5",
   "summary": {
     "status": "qa_passed",
     "complianceRate": 100,
@@ -18,147 +18,147 @@
     "failedQaPasses": 0,
     "e2eSuitesCount": 0,
     "e2ePassedCount": 0,
-    "lastFullAudit": "2026-11-01T12:28:42.170Z",
+    "lastFullAudit": "2026-11-02T08:59:00.057Z",
     "lastE2ERun": null
   },
   "qaPasses": {
     "pass-01-routing": {
       "name": "pass-01-routing",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-02-swr": {
       "name": "pass-02-swr",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-03-data-models": {
       "name": "pass-03-data-models",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-04-modals": {
       "name": "pass-04-modals",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-05-drawers": {
       "name": "pass-05-drawers",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-06-responsive": {
       "name": "pass-06-responsive",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-07-themes": {
       "name": "pass-07-themes",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-08-notifications": {
       "name": "pass-08-notifications",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-09-payloads": {
       "name": "pass-09-payloads",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-10-components": {
       "name": "pass-10-components",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-11-e2e-expectations": {
       "name": "pass-11-e2e-expectations",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-12-asset-externalization": {
       "name": "pass-12-asset-externalization",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-13-manifest-sync": {
       "name": "pass-13-manifest-sync",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-14-ui-states": {
       "name": "pass-14-ui-states",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-15-security": {
       "name": "pass-15-security",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-16-accessibility": {
       "name": "pass-16-accessibility",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-17-input-formatting": {
       "name": "pass-17-input-formatting",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-18-kanban-list-views": {
       "name": "pass-18-kanban-list-views",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-19-ui-best-practices": {
       "name": "pass-19-ui-best-practices",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-20-search-filters": {
       "name": "pass-20-search-filters",
       "status": "passed",
-      "lastRun": "2026-11-01T12:28:42.170Z",
+      "lastRun": "2026-11-02T08:59:00.057Z",
       "pagesCovered": 13,
       "issuesFound": 0
     }
@@ -167,444 +167,275 @@
     "pages/dashboard/dashboard.html": {
       "pageName": "Shift & Cover Pulse",
       "route": "dashboard",
-      "fileHash": "sha256:0b57398b8da0a0b71096ad4df9f3bb252193241024f6087cd93afa904cd58d07",
-      "lastModified": "2026-11-01T12:28:42.063Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:f7d226e5cc8634787fd09268bdb35bf1cad208c1e81622dfceb1aed1d2d7869e",
+      "lastModified": "2026-11-02T08:58:59.950Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 8,
-        "buttonsWithActions": 8,
+        "buttonsTotal": 5,
+        "buttonsWithActions": 5,
         "deadButtons": 0,
-        "linksTotal": 12,
-        "linksValid": 12,
+        "linksTotal": 18,
+        "linksValid": 18,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 2,
-        "modalsTotal": 1
+        "swrCalls": 0,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/host-board/host-board.html": {
       "pageName": "Live Floor & Seating Board",
       "route": "host-board",
-      "fileHash": "sha256:132b181ebce8615bd0e2cc22e5b314b0de135643db007c812b87bc4657dbd446",
-      "lastModified": "2026-11-01T12:28:42.064Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:e6afd3320729158f74fb140c9ab6a2f7cc26e08d02154776f3cd2fe6b0f6e554",
+      "lastModified": "2026-11-02T08:58:59.950Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 8,
-        "buttonsWithActions": 8,
+        "buttonsTotal": 6,
+        "buttonsWithActions": 6,
         "deadButtons": 0,
-        "linksTotal": 12,
-        "linksValid": 12,
+        "linksTotal": 14,
+        "linksValid": 14,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 2,
-        "modalsTotal": 1
+        "swrCalls": 0,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/waitlist/waitlist.html": {
       "pageName": "Walk-In & Notify Waitlist",
       "route": "waitlist",
-      "fileHash": "sha256:5365e67d54f0c484de0b5b5f277e0e3968a405e92f679d0f20b99d4559d19222",
-      "lastModified": "2026-11-01T12:28:42.064Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:5b8b95d92c0eac28b6d55023a900b9403c1a9a5c476b0a87ccedf6ffae9e8f34",
+      "lastModified": "2026-11-02T08:58:59.950Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 8,
-        "buttonsWithActions": 8,
+        "buttonsTotal": 5,
+        "buttonsWithActions": 5,
         "deadButtons": 0,
-        "linksTotal": 12,
-        "linksValid": 12,
+        "linksTotal": 14,
+        "linksValid": 14,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 2,
-        "modalsTotal": 1
+        "swrCalls": 0,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/reservations/reservations.html": {
       "pageName": "Reservation Book",
       "route": "reservations",
-      "fileHash": "sha256:25aec6e8df7351f35ac0d2e1e6a6b96fed0ed970473f5192f1e6bd0dac94e793",
-      "lastModified": "2026-11-01T12:28:42.064Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:2c0c3a3c49142a00c506d14587de08b3143b793e77ed82d383a3d312cc29236d",
+      "lastModified": "2026-11-02T08:58:59.951Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 8,
-        "buttonsWithActions": 8,
+        "buttonsTotal": 6,
+        "buttonsWithActions": 6,
         "deadButtons": 0,
-        "linksTotal": 12,
-        "linksValid": 12,
+        "linksTotal": 14,
+        "linksValid": 14,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 2,
-        "modalsTotal": 1
+        "swrCalls": 0,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/diner-directory/diner-directory.html": {
       "pageName": "Diner 360 Guestbook",
       "route": "diner-directory",
-      "fileHash": "sha256:e4c810b80c6693f4baabccbe9fe36e4681a1dda5d293b0e7f2d1026a49c25247",
-      "lastModified": "2026-11-01T12:28:42.064Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:4c6e3741ade42529ef0ad99d26e9ed850075cb59fa4f28ac0d33aa3c2ffdc127",
+      "lastModified": "2026-11-02T08:58:59.951Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 8,
-        "buttonsWithActions": 8,
+        "buttonsTotal": 5,
+        "buttonsWithActions": 5,
         "deadButtons": 0,
-        "linksTotal": 12,
-        "linksValid": 12,
+        "linksTotal": 14,
+        "linksValid": 14,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 2,
-        "modalsTotal": 1
+        "swrCalls": 0,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/experiences/experiences.html": {
       "pageName": "Prepaid Tickets & Tasting",
       "route": "experiences",
-      "fileHash": "sha256:cd22faf7e35a27f927e6b08bcf8685a45f13263774cff79c57ef398f2cf95ffa",
-      "lastModified": "2026-11-01T12:28:42.065Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:2cf047f113574f4ec5e2b265965d8b67a606b959e1ae88e1787e19dbac1d3b9e",
+      "lastModified": "2026-11-02T08:58:59.951Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 8,
-        "buttonsWithActions": 8,
+        "buttonsTotal": 5,
+        "buttonsWithActions": 5,
         "deadButtons": 0,
-        "linksTotal": 12,
-        "linksValid": 12,
+        "linksTotal": 14,
+        "linksValid": 14,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 2,
-        "modalsTotal": 1
+        "swrCalls": 0,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/floor-zones/floor-zones.html": {
       "pageName": "Floor Plans & Table Combos",
       "route": "floor-zones",
-      "fileHash": "sha256:9d39da20b1ee66a64a3d58c42bccde1d73a0ab9bdde0cc9d4afe7ac18995d28c",
-      "lastModified": "2026-11-01T12:28:42.065Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:51cbc5ab852daa40e4d6f28e2c671dcbfb358f328e5c5197cd2cd5f22362ec04",
+      "lastModified": "2026-11-02T08:58:59.952Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 8,
-        "buttonsWithActions": 8,
+        "buttonsTotal": 6,
+        "buttonsWithActions": 6,
         "deadButtons": 0,
-        "linksTotal": 12,
-        "linksValid": 12,
+        "linksTotal": 13,
+        "linksValid": 13,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 2,
-        "modalsTotal": 1
+        "swrCalls": 0,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/shifts-pacing/shifts-pacing.html": {
       "pageName": "Shifts, Pacing & Policies",
       "route": "shifts-pacing",
-      "fileHash": "sha256:1ca61519e1d4b02c2cc7220e81b4e12599fcc14fc105ff2bca4f89dfc0e289c1",
-      "lastModified": "2026-11-01T12:28:42.066Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:47f04b3fa8f89ece3f76248185987ac5268e4d597046c3ff0b041fec456e3e48",
+      "lastModified": "2026-11-02T08:58:59.952Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 8,
-        "buttonsWithActions": 8,
+        "buttonsTotal": 6,
+        "buttonsWithActions": 6,
         "deadButtons": 0,
-        "linksTotal": 12,
-        "linksValid": 12,
+        "linksTotal": 13,
+        "linksValid": 13,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 2,
-        "modalsTotal": 1
+        "swrCalls": 0,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/preshift-analytics/preshift-analytics.html": {
       "pageName": "Pre-Shift Chit & RevPASH",
       "route": "preshift-analytics",
-      "fileHash": "sha256:8e85c950f9f2fb1a1609039ebe3edab5d3913405a1f19a445da8ba7d4638e5d8",
-      "lastModified": "2026-11-01T12:28:42.066Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:8912dbcc644c863db169b09883b1ec9535d28ce1631a56922464296058ce82bf",
+      "lastModified": "2026-11-02T08:58:59.953Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 8,
-        "buttonsWithActions": 8,
+        "buttonsTotal": 7,
+        "buttonsWithActions": 7,
         "deadButtons": 0,
-        "linksTotal": 12,
-        "linksValid": 12,
+        "linksTotal": 13,
+        "linksValid": 13,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 2,
-        "modalsTotal": 1
+        "swrCalls": 0,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/reservation-detail/reservation-detail.html": {
       "pageName": "Reservation & Seating 360",
       "route": "reservation-detail",
-      "fileHash": "sha256:ae91c2c8200c30d3eeb3e85e50471a372f3060ab57d26b3c8098f74e436e93f6",
-      "lastModified": "2026-11-01T12:28:42.066Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:9bc422cb7b0eab0e2300cf2e536dd270996619759f722f521f1b17cbeaa680e9",
+      "lastModified": "2026-11-02T08:58:59.953Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 9,
         "buttonsWithActions": 9,
         "deadButtons": 0,
-        "linksTotal": 14,
-        "linksValid": 14,
+        "linksTotal": 16,
+        "linksValid": 16,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 0,
-        "modalsTotal": 1
+        "swrCalls": 1,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/diner-detail/diner-detail.html": {
       "pageName": "Diner 360 Profile",
       "route": "diner-detail",
-      "fileHash": "sha256:569efa9d5e0df6531946bccab4dcc74d9397cbae4d3184cdbde5b6f32c032b3d",
-      "lastModified": "2026-11-01T12:28:42.067Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:8dc8d26dfcd00752a53eb04969934a5ed900e50cb4f1b472aa39f94afb9c237b",
+      "lastModified": "2026-11-02T08:58:59.953Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 9,
-        "buttonsWithActions": 9,
+        "buttonsTotal": 5,
+        "buttonsWithActions": 5,
         "deadButtons": 0,
-        "linksTotal": 14,
-        "linksValid": 14,
+        "linksTotal": 15,
+        "linksValid": 15,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 0,
-        "modalsTotal": 1
+        "swrCalls": 1,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/reservation-drawer/reservation-drawer.html": {
       "pageName": "Book / Edit Reservation",
       "route": "reservation-drawer",
-      "fileHash": "sha256:ac74128c28343dc7c7dd308e1c1817c156755853d1676ad698e58e2a1b7a481e",
-      "lastModified": "2026-11-01T12:28:42.067Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:a33a86b522d85f620142b8456e05312c2e663ad0eda3a6a858457ac0cd3c95b9",
+      "lastModified": "2026-11-02T08:58:59.954Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 7,
-        "buttonsWithActions": 7,
+        "buttonsTotal": 6,
+        "buttonsWithActions": 6,
         "deadButtons": 0,
-        "linksTotal": 14,
-        "linksValid": 14,
+        "linksTotal": 15,
+        "linksValid": 15,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 1,
-        "modalsTotal": 1
+        "swrCalls": 2,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     },
     "pages/waitlist-drawer/waitlist-drawer.html": {
       "pageName": "Add Walk-In / Notify Request",
       "route": "waitlist-drawer",
-      "fileHash": "sha256:a9b8c5351338cef8e644991dbf835904c20dc7f4a1ed18b016514418268fa2e7",
-      "lastModified": "2026-11-01T12:28:42.067Z",
-      "lastTested": "2026-11-01T12:28:42.170Z",
+      "fileHash": "sha256:fe7f3b78b9f81717ebe04b112bf2129be9b4a9f78346e7e9a2f6e16e549c8143",
+      "lastModified": "2026-11-02T08:58:59.954Z",
+      "lastTested": "2026-11-02T08:59:00.057Z",
       "status": "passed",
       "metrics": {
-        "buttonsTotal": 7,
-        "buttonsWithActions": 7,
+        "buttonsTotal": 6,
+        "buttonsWithActions": 6,
         "deadButtons": 0,
-        "linksTotal": 14,
-        "linksValid": 14,
+        "linksTotal": 15,
+        "linksValid": 15,
         "nativeAlerts": 0,
         "contrastCompliant": true,
-        "swrCalls": 1,
-        "modalsTotal": 1
+        "swrCalls": 2,
+        "modalsTotal": 0
       },
       "issues": [],
-      "warnings": [
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_LIGHT_BACKGROUND",
-          "message": "Container has \"bg-white\" without a corresponding \"dark:bg-*\" variant class (sidebar w-64 bg-white border-r border-slate-200 fl).",
-          "snippet": "<div class=\"sidebar w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 transition-all duration-300 z-30 select-none\">"
-        },
-        {
-          "rule": "Pass 11: Dark & Light Theme Compliance",
-          "type": "HARDCODED_DARK_TEXT",
-          "message": "Text has hardcoded dark color without a corresponding \"dark:text-*\" variant (bg-slate-50 text-slate-900 font-sans antialiased m).",
-          "snippet": "<div class=\"bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex\">"
-        }
-      ]
+      "warnings": []
     }
   },
   "e2eSuites": {
@@ -614,6 +445,16 @@
     "suites": []
   },
   "history": [
+    {
+      "timestamp": "2026-11-02T08:59:00.057Z",
+      "action": "qa_full_audit",
+      "commit": "715d3d5",
+      "complianceRate": 100,
+      "pagesAudited": 13,
+      "status": "passed",
+      "agent": "Antigravity",
+      "details": "13/13 pages passed. Completed 20/20 QA passes."
+    },
     {
       "timestamp": "2026-11-01T12:28:42.170Z",
       "action": "qa_full_audit",

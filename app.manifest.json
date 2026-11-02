@@ -4,10 +4,12 @@
   "domainKey": "HSP",
   "appSuite": {
     "key": "HSP",
-    "title": "Rapider Hospitality Suite"
+    "title": "Rapider Hospitality Suite",
+    "shortTitle": "Hospitality Suite",
+    "icon": "fas fa-concierge-bell"
   },
   "type": "App",
-  "description": "1.2 Target Personas & Progressive Disclosure - SME Fast-Path Defaults (Neighborhood Bistros, Casual Dining, Wine Bars): Launch in 10 minutes with a single dining room + patio map, standard Lunch/Dinner shift hours, commission-free ComSite booking link, SMS walk-in waitlist (<rapider-phone-input>), and live <rapider-kanban> host stand board. - Enterprise Progressive Disclosure (Fine-Dining Groups, Michelin Tasting Rooms, Multi-Outlet Resorts, Beach Clubs): Unlock multi-zone floor combinations, 15",
+  "description": "Commission-free restaurant reservation engine, combinable multi-zone floor plans, 15-minute kitchen arrival pacing, two-way SMS walk-in waitlist, prepaid tasting experiences, and Diner 360 hospitality CRM.",
   "isPublic": true,
   "tags": [
     "hsp",
@@ -26,5367 +28,633 @@
   "isolationScope": "ENTERPRISE_SHARED",
   "dataModels": [
     {
-      "name": "CrmAccount",
-      "title": "Account",
-      "description": "Customer entity with credit limit, balance, and risk profile.",
-      "domainName": "Rapider CRM Suite",
-      "domainKey": "CRM",
-      "datatableName": "CrmAccount",
-      "dataTableName": "CrmAccount",
-      "sqlTableName": "crm_account",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ code }} - {{ name }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "name",
-          "code"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "ledgerId",
-            "code",
-            "name",
-            "type"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "ledgerId"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 50,
-          "defaultContextLimit": 20,
-          "hiddenFields": [],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "email",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "phone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "creditLimit",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "currentBalance",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "riskFlag",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "paymentTerms",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "accountOwner",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "taxId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        },
-        {
-          "name": "createdAt",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "updatedAt",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "accountCode",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "accountType",
-          "type": "string",
-          "description": "Allowed values: PROSPECT, CUSTOMER, PARTNER, COMPETITOR, HOUSEHOLD",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "PROSPECT",
-            "CUSTOMER",
-            "PARTNER",
-            "COMPETITOR",
-            "HOUSEHOLD"
-          ],
-          "options": [
-            "PROSPECT",
-            "CUSTOMER",
-            "PARTNER",
-            "COMPETITOR",
-            "HOUSEHOLD"
-          ]
-        },
-        {
-          "name": "customerTier",
-          "type": "string",
-          "description": "Allowed values: ENTERPRISE, MID_MARKET, SMB, VIP",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "ENTERPRISE",
-            "MID_MARKET",
-            "SMB",
-            "VIP"
-          ],
-          "options": [
-            "ENTERPRISE",
-            "MID_MARKET",
-            "SMB",
-            "VIP"
-          ]
-        },
-        {
-          "name": "supportSlaTier",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "primaryDomain",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "parentAccountId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "CrmAccount",
-          "referenceField": "id"
-        },
-        {
-          "name": "legalEntityId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "FinLegalEntity",
-          "referenceField": "id"
-        },
-        {
-          "name": "industry",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "revenue",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "website",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "ownerPersonId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "type",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "ledger",
-          "type": "belongsTo",
-          "sourceModel": "CrmAccount",
-          "sourceField": "ledgerId",
-          "targetModel": "FinLedger",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "The ledger this account belongs to."
-        },
-        {
-          "name": "parentAccount",
-          "type": "belongsTo",
-          "sourceModel": "CrmAccount",
-          "sourceField": "parentAccountId",
-          "targetModel": "CrmAccount",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "CrmAccount parentAccount foreign key link to CrmAccount."
-        },
-        {
-          "name": "ownerEmployee",
-          "type": "belongsTo",
-          "sourceModel": "CrmAccount",
-          "sourceField": "ownerEmployeeId",
-          "targetModel": "HrEmployee",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "CrmAccount ownerEmployee foreign key link to HrEmployee."
-        },
-        {
-          "name": "territory",
-          "type": "belongsTo",
-          "sourceModel": "CrmAccount",
-          "sourceField": "territoryId",
-          "targetModel": "CrmTerritory",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "CrmAccount territory foreign key link to CrmTerritory."
-        },
-        {
-          "name": "defaultBillingProfile",
-          "type": "belongsTo",
-          "sourceModel": "CrmAccount",
-          "sourceField": "defaultBillingProfileId",
-          "targetModel": "FinBillingProfile",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "CrmAccount defaultBillingProfile foreign key link to FinBillingProfile."
-        }
-      ]
-    },
-    {
-      "name": "CrmContact",
-      "title": "Contact",
-      "description": "Represents an individual person, usually associated with an Account.",
-      "domainName": "Rapider CRM Suite",
-      "domainKey": "CRM",
-      "datatableName": "CrmContact",
-      "dataTableName": "CrmContact",
-      "sqlTableName": "crm_contact",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ firstName }} {{ lastName }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "firstName",
-          "lastName",
-          "email",
-          "jobTitle"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "firstName",
-            "lastName",
-            "accountId"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [],
-          "additionalPrompt": "Always link a contact to an account if mentioned.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "Email must be a valid format if provided."
-        },
-        "entityItemUpdate": {
-          "immutableFields": [],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 15,
-          "hiddenFields": [],
-          "maskedFields": [
-            "phone"
-          ],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "accountId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "firstName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "lastName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "email",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "phone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "title",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "fullName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "phoneE164",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "jobSeniority",
-          "type": "string",
-          "description": "Allowed values: C_SUITE, VP, DIRECTOR, MANAGER, IC",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "C_SUITE",
-            "VP",
-            "DIRECTOR",
-            "MANAGER",
-            "IC"
-          ],
-          "options": [
-            "C_SUITE",
-            "VP",
-            "DIRECTOR",
-            "MANAGER",
-            "IC"
-          ]
-        },
-        {
-          "name": "buyingRole",
-          "type": "string",
-          "description": "Allowed values: ECONOMIC_BUYER, CHAMPION, EVALUATOR, PROCUREMENT, END_USER",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "ECONOMIC_BUYER",
-            "CHAMPION",
-            "EVALUATOR",
-            "PROCUREMENT",
-            "END_USER"
-          ],
-          "options": [
-            "ECONOMIC_BUYER",
-            "CHAMPION",
-            "EVALUATOR",
-            "PROCUREMENT",
-            "END_USER"
-          ]
-        },
-        {
-          "name": "portalUserId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "preferredLanguage",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "timezone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "marketingConsentStatus",
-          "type": "string",
-          "description": "Allowed values: OPTED_IN, OPTED_OUT, UNSET",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "OPTED_IN",
-            "OPTED_OUT",
-            "UNSET"
-          ],
-          "options": [
-            "OPTED_IN",
-            "OPTED_OUT",
-            "UNSET"
-          ]
-        },
-        {
-          "name": "dncStatus",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "Allowed values: ACTIVE, INACTIVE, BOUNCED, SUPPRESSED",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "ACTIVE",
-            "INACTIVE",
-            "BOUNCED",
-            "SUPPRESSED"
-          ],
-          "options": [
-            "ACTIVE",
-            "INACTIVE",
-            "BOUNCED",
-            "SUPPRESSED"
-          ]
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "company",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "account",
-          "type": "belongsTo",
-          "sourceModel": "CrmContact",
-          "sourceField": "accountId",
-          "targetModel": "CrmAccount",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "The account this contact is associated with."
-        },
-        {
-          "name": "opportunities",
-          "type": "hasMany",
-          "sourceModel": "CrmContact",
-          "sourceField": "id",
-          "targetModel": "CrmOpportunity",
-          "targetField": "primaryContactId",
-          "throughModel": null,
-          "description": "Opportunities where this contact is the primary stakeholder."
-        },
-        {
-          "name": "ownerEmployee",
-          "type": "belongsTo",
-          "sourceModel": "CrmContact",
-          "sourceField": "ownerEmployeeId",
-          "targetModel": "HrEmployee",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "CrmContact ownerEmployee foreign key link to HrEmployee."
-        },
-        {
-          "name": "sourceCampaign",
-          "type": "belongsTo",
-          "sourceModel": "CrmContact",
-          "sourceField": "sourceCampaignId",
-          "targetModel": "MktCampaign",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "CrmContact sourceCampaign foreign key link to MktCampaign."
-        }
-      ]
-    },
-    {
-      "name": "CrmOpportunity",
-      "title": "Opportunity",
-      "description": "Represents a potential sales deal.",
-      "domainName": "Rapider CRM Suite",
-      "domainKey": "CRM",
-      "datatableName": "CrmOpportunity",
-      "dataTableName": "CrmOpportunity",
-      "sqlTableName": "crm_opportunity",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ name }} - {{ stage }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "name",
-          "stage"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "name",
-            "accountId",
-            "stage"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [],
-          "additionalPrompt": "Ensure the opportunity is linked to an account.",
-          "requireUserConfirmation": true,
-          "customValidationPrompt": "Amount must be greater than 0 if provided."
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "accountId"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": true,
-          "customValidationPrompt": "If the stage is changing to 'Closed Won', ensure the amount is greater than 0.",
-          "restrictedStates": [
-            {
-              "description": "Opportunities marked as Closed Won cannot have their amounts modified.",
-              "where": {}
-            }
-          ]
-        },
-        "entityRead": {
-          "defaultPageSize": 10,
-          "defaultContextLimit": 20,
-          "hiddenFields": [],
-          "maskedFields": [],
-          "additionalPrompt": "Highlight high-value opportunities."
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": [
-            {
-              "description": "Cannot delete closed opportunities.",
-              "where": {}
-            }
-          ]
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "accountId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "primaryContactId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "amount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "stage",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "closeDate",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "probability",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "Lifecycle or record status.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "account",
-          "type": "belongsTo",
-          "sourceModel": "CrmOpportunity",
-          "sourceField": "accountId",
-          "targetModel": "CrmAccount",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "The account this opportunity is associated with."
-        },
-        {
-          "name": "primaryContact",
-          "type": "belongsTo",
-          "sourceModel": "CrmOpportunity",
-          "sourceField": "primaryContactId",
-          "targetModel": "CrmContact",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "The primary contact driving this deal."
-        },
-        {
-          "name": "quotes",
-          "type": "hasMany",
-          "sourceModel": "CrmOpportunity",
-          "sourceField": "id",
-          "targetModel": "CrmQuote",
-          "targetField": "opportunityId",
-          "throughModel": null,
-          "description": "Quotes generated for this opportunity."
-        },
-        {
-          "name": "orders",
-          "type": "hasMany",
-          "sourceModel": "CrmOpportunity",
-          "sourceField": "id",
-          "targetModel": "OpsCustomerOrder",
-          "targetField": "opportunityId",
-          "throughModel": null,
-          "description": "Orders generated upon winning the opportunity."
-        },
-        {
-          "name": "activities",
-          "type": "hasMany",
-          "sourceModel": "CrmOpportunity",
-          "sourceField": "id",
-          "targetModel": "CrmActivity",
-          "targetField": "opportunityId",
-          "throughModel": null,
-          "description": "Activities logged against this deal."
-        }
-      ]
-    },
-    {
-      "name": "FinInvoice",
-      "title": "Invoice",
-      "description": "Accounts Payable or Receivable invoice.",
-      "domainName": "Rapider Finance Suite",
-      "domainKey": "FIN",
-      "datatableName": "FinInvoice",
-      "dataTableName": "FinInvoice",
-      "sqlTableName": "fin_invoice",
-      "isolationScope": "ENTERPRISE_SHARED_GOVERNED",
-      "titleFieldTemplate": "{{ partnerName }} - {{ totalAmount }} {{ currency }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "partnerName"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "legalEntityId",
-            "type",
-            "partnerName",
-            "invoiceDate",
-            "totalAmount",
-            "currency"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "status"
-          ],
-          "additionalPrompt": "",
-          "requireUserConfirmation": true,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "legalEntityId",
-            "type"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": true,
-          "customValidationPrompt": "",
-          "restrictedStates": [
-            {
-              "description": "Cannot modify paid invoices.",
-              "where": {}
-            }
-          ]
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 10,
-          "hiddenFields": [],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [
-            "payments"
-          ],
-          "restrictedStates": [
-            {
-              "description": "Cannot delete approved or paid invoices.",
-              "where": {}
-            }
-          ]
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "legalEntityId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "type",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "partnerName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "invoiceDate",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "dueDate",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "totalAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "currency",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        },
-        {
-          "name": "invoiceNumber",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "accountId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "CrmAccount",
-          "referenceField": "id"
-        },
-        {
-          "name": "billingProfileId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "FinBillingProfile",
-          "referenceField": "id"
-        },
-        {
-          "name": "subscriptionId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "FinSubscription",
-          "referenceField": "id"
-        },
-        {
-          "name": "customerOrderId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "OpsCustomerOrder",
-          "referenceField": "id"
-        },
-        {
-          "name": "issueDate",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "subtotalAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "taxAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "openAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "currencyCode",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "disputeStatus",
-          "type": "string",
-          "description": "Allowed values: NONE, IN_DISPUTE, RESOLVED) (from accreceivable",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "NONE",
-            "IN_DISPUTE",
-            "RESOLVED) (from accreceivable"
-          ],
-          "options": [
-            "NONE",
-            "IN_DISPUTE",
-            "RESOLVED) (from accreceivable"
-          ]
-        },
-        {
-          "name": "eInvoiceClearanceStatus",
-          "type": "string",
-          "description": "Allowed values: NOT_REQUIRED, PENDING, CLEARED, REJECTED",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "NOT_REQUIRED",
-            "PENDING",
-            "CLEARED",
-            "REJECTED"
-          ],
-          "options": [
-            "NOT_REQUIRED",
-            "PENDING",
-            "CLEARED",
-            "REJECTED"
-          ]
-        },
-        {
-          "name": "customerName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "createdAt",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "updatedAt",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "legalEntity",
-          "type": "belongsTo",
-          "sourceModel": "FinInvoice",
-          "sourceField": "legalEntityId",
-          "targetModel": "FinLegalEntity",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "The legal entity this invoice belongs to."
-        },
-        {
-          "name": "payments",
-          "type": "hasMany",
-          "sourceModel": "FinInvoice",
-          "sourceField": "id",
-          "targetModel": "FinPayment",
-          "targetField": "invoiceId",
-          "throughModel": null,
-          "description": "Payments applied to this invoice."
-        },
-        {
-          "name": "account",
-          "type": "belongsTo",
-          "sourceModel": "FinInvoice",
-          "sourceField": "accountId",
-          "targetModel": "CrmAccount",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "FinInvoice account foreign key link to CrmAccount."
-        },
-        {
-          "name": "billingProfile",
-          "type": "belongsTo",
-          "sourceModel": "FinInvoice",
-          "sourceField": "billingProfileId",
-          "targetModel": "FinBillingProfile",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "FinInvoice billingProfile foreign key link to FinBillingProfile."
-        },
-        {
-          "name": "subscription",
-          "type": "belongsTo",
-          "sourceModel": "FinInvoice",
-          "sourceField": "subscriptionId",
-          "targetModel": "FinSubscription",
-          "targetField": "id?",
-          "throughModel": null,
-          "description": "FinInvoice subscription foreign key link to FinSubscription."
-        },
-        {
-          "name": "customerOrder",
-          "type": "belongsTo",
-          "sourceModel": "FinInvoice",
-          "sourceField": "customerOrderId",
-          "targetModel": "OpsCustomerOrder",
-          "targetField": "id?",
-          "throughModel": null,
-          "description": "FinInvoice customerOrder foreign key link to OpsCustomerOrder."
-        }
-      ]
-    },
-    {
-      "name": "FinPaymentIntent",
-      "title": "Payment Intent",
-      "description": "Represents a request to move money, such as a supplier payment, refund, or transfer.",
-      "domainName": "Rapider Finance Suite",
-      "domainKey": "FIN",
-      "datatableName": "FinPaymentIntent",
-      "dataTableName": "FinPaymentIntent",
-      "sqlTableName": "fin_payment_intent",
-      "isolationScope": "ENTERPRISE_SHARED_GOVERNED",
-      "titleFieldTemplate": "{{ payeeName }} - {{ amount }} {{ currency }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "payeeName",
-          "payeeAccount",
-          "status"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "amount",
-            "currency",
-            "payeeName",
-            "providerId"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "status"
-          ],
-          "additionalPrompt": "Ensure the currency is a valid 3-letter ISO code. Default status to 'Pending'.",
-          "requireUserConfirmation": true,
-          "customValidationPrompt": "If amount is over 10000, ensure a sourceDocumentId is provided."
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "amount",
-            "currency",
-            "payeeName"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "Only update status if authorized.",
-          "requireUserConfirmation": true,
-          "customValidationPrompt": "Cannot change providerId if status is 'Processing' or 'Executed'.",
-          "restrictedStates": [
-            {
-              "description": "Cannot modify executed or failed payment intents.",
-              "where": {}
-            }
-          ]
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [],
-          "maskedFields": [
-            "payeeAccount"
-          ],
-          "additionalPrompt": "Highlight failed payment intents."
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [
-            "settlements"
-          ],
-          "restrictedStates": [
-            {
-              "description": "Cannot delete executed payment intents.",
-              "where": {}
-            }
-          ]
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "batchId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "providerId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "amount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "currency",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "payeeName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "payeeAccount",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "sourceDocumentId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        },
-        {
-          "name": "direction",
-          "type": "string",
-          "description": "Allowed values: INBOUND_COLLECTION, OUTBOUND_PAYOUT) (unifies billing & payments",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "INBOUND_COLLECTION",
-            "OUTBOUND_PAYOUT) (unifies billing & payments"
-          ],
-          "options": [
-            "INBOUND_COLLECTION",
-            "OUTBOUND_PAYOUT) (unifies billing & payments"
-          ]
-        },
-        {
-          "name": "accountId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "CrmAccount",
-          "referenceField": "id"
-        },
-        {
-          "name": "supplierId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "OpsSupplierProfile",
-          "referenceField": "id"
-        },
-        {
-          "name": "sourceDocumentType",
-          "type": "string",
-          "description": "Allowed values: INVOICE, SUPPLIER_BILL, EXPENSE_REPORT, PAYROLL_RUN, ORDER, REFUND",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "INVOICE",
-            "SUPPLIER_BILL",
-            "EXPENSE_REPORT",
-            "PAYROLL_RUN",
-            "ORDER",
-            "REFUND"
-          ],
-          "options": [
-            "INVOICE",
-            "SUPPLIER_BILL",
-            "EXPENSE_REPORT",
-            "PAYROLL_RUN",
-            "ORDER",
-            "REFUND"
-          ]
-        },
-        {
-          "name": "currencyCode",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "tokenRef",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "mandateRef",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "idempotencyKey",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "providerRef",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "payerId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "batch",
-          "type": "belongsTo",
-          "sourceModel": "FinPaymentIntent",
-          "sourceField": "batchId",
-          "targetModel": "FinPaymentBatch",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "The batch this payment intent belongs to."
-        },
-        {
-          "name": "provider",
-          "type": "belongsTo",
-          "sourceModel": "FinPaymentIntent",
-          "sourceField": "providerId",
-          "targetModel": "FinPaymentProvider",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "The provider executing this payment intent."
-        },
-        {
-          "name": "settlements",
-          "type": "hasMany",
-          "sourceModel": "FinPaymentIntent",
-          "sourceField": "id",
-          "targetModel": "FinSettlement",
-          "targetField": "intentId",
-          "throughModel": null,
-          "description": "Settlements associated with this payment intent."
-        },
-        {
-          "name": "account",
-          "type": "belongsTo",
-          "sourceModel": "FinPaymentIntent",
-          "sourceField": "accountId",
-          "targetModel": "CrmAccount",
-          "targetField": "id?",
-          "throughModel": null,
-          "description": "FinPaymentIntent account foreign key link to CrmAccount."
-        },
-        {
-          "name": "supplier",
-          "type": "belongsTo",
-          "sourceModel": "FinPaymentIntent",
-          "sourceField": "supplierId",
-          "targetModel": "OpsSupplierProfile",
-          "targetField": "id?",
-          "throughModel": null,
-          "description": "FinPaymentIntent supplier foreign key link to OpsSupplierProfile."
-        }
-      ]
-    },
-    {
-      "name": "HrEmployee",
-      "title": "Employee",
-      "description": "Core profile representing an individual worker within the organization.",
-      "domainName": "Rapider HR & Talent Suite",
-      "domainKey": "HR",
-      "datatableName": "HrEmployee",
-      "dataTableName": "HrEmployee",
-      "sqlTableName": "hr_employee",
-      "isolationScope": "ENTERPRISE_SHARED_WITH_CONFIDENTIAL_VAULTS",
-      "titleFieldTemplate": "{{ firstName }} {{ lastName }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "firstName",
-          "lastName",
-          "email",
-          "jobTitle",
-          "employeeNumber"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "firstName",
-            "lastName",
-            "email",
-            "status"
-          ],
-          "immutableFields": [],
-          "requiredRelations": [],
-          "autoGenerateFields": [],
-          "additionalPrompt": "Ensure the email address is formatted correctly. If a department is mentioned, link the employee to the correct departmentId.",
-          "requireUserConfirmation": true,
-          "customValidationPrompt": "If status is 'Active', a hireDate must be provided or assumed as today."
-        },
-        "entityItemUpdate": {
-          "immutableFields": [],
-          "autoGenerateFields": [],
-          "additionalPrompt": "When updating manager or department, suggest creating a Lifecycle Event.",
-          "requireUserConfirmation": true,
-          "customValidationPrompt": "Ensure the employee is not set as their own manager.",
-          "restrictedStates": [
-            {
-              "description": "Cannot update terminated employees without authorization.",
-              "where": {}
-            }
-          ]
-        },
-        "entityRead": {
-          "defaultPageSize": 50,
-          "defaultContextLimit": 100,
-          "hiddenFields": [
-            "ssn"
-          ],
-          "maskedFields": [
-            "personalEmail",
-            "phone"
-          ],
-          "additionalPrompt": "Always show job title, department, and status."
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [
-            "lifecycleEvents",
-            "documents",
-            "emergencyContacts"
-          ],
-          "restrictedStates": [
-            {
-              "description": "Active employees must be terminated before deletion.",
-              "where": {}
-            }
-          ]
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "employeeNumber",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "firstName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "lastName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "preferredName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "email",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "personalEmail",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "phone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "jobTitle",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "workerType",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "employmentType",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "hireDate",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "startDate",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "endDate",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "departmentId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "managerId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "positionId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "jobProfileId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "locationId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "legalEntityId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "weeklyHours",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "timeZone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "avatarColor",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "notes",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "department",
-          "type": "belongsTo",
-          "sourceModel": "HrEmployee",
-          "sourceField": "departmentId",
-          "targetModel": "HrDepartment",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "Department this employee belongs to."
-        },
-        {
-          "name": "manager",
-          "type": "belongsTo",
-          "sourceModel": "HrEmployee",
-          "sourceField": "managerId",
-          "targetModel": "HrEmployee",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "Manager this employee reports to."
-        },
-        {
-          "name": "position",
-          "type": "belongsTo",
-          "sourceModel": "HrEmployee",
-          "sourceField": "positionId",
-          "targetModel": "HrPosition",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "Specific position this employee holds."
-        },
-        {
-          "name": "jobProfile",
-          "type": "belongsTo",
-          "sourceModel": "HrEmployee",
-          "sourceField": "jobProfileId",
-          "targetModel": "HrJobProfile",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "Job profile associated with this employee."
-        },
-        {
-          "name": "location",
-          "type": "belongsTo",
-          "sourceModel": "HrEmployee",
-          "sourceField": "locationId",
-          "targetModel": "HrLocation",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "Work location of this employee."
-        },
-        {
-          "name": "legalEntity",
-          "type": "belongsTo",
-          "sourceModel": "HrEmployee",
-          "sourceField": "legalEntityId",
-          "targetModel": "FinLegalEntity",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "Legal entity employing this person."
-        },
-        {
-          "name": "lifecycleEvents",
-          "type": "hasMany",
-          "sourceModel": "HrEmployee",
-          "sourceField": "id",
-          "targetModel": "HrLifecycleEvent",
-          "targetField": "employeeId",
-          "throughModel": null,
-          "description": "Lifecycle events for this employee."
-        },
-        {
-          "name": "changeRequests",
-          "type": "hasMany",
-          "sourceModel": "HrEmployee",
-          "sourceField": "id",
-          "targetModel": "HrChangeRequest",
-          "targetField": "employeeId",
-          "throughModel": null,
-          "description": "Pending and past change requests for this employee."
-        },
-        {
-          "name": "documents",
-          "type": "hasMany",
-          "sourceModel": "HrEmployee",
-          "sourceField": "id",
-          "targetModel": "HrDocumentRef",
-          "targetField": "employeeId",
-          "throughModel": null,
-          "description": "Uploaded compliance and employment documents."
-        },
-        {
-          "name": "emergencyContacts",
-          "type": "hasMany",
-          "sourceModel": "HrEmployee",
-          "sourceField": "id",
-          "targetModel": "HrEmergencyContact",
-          "targetField": "employeeId",
-          "throughModel": null,
-          "description": "Emergency contacts."
-        },
-        {
-          "name": "directReports",
-          "type": "hasMany",
-          "sourceModel": "HrEmployee",
-          "sourceField": "id",
-          "targetModel": "HrEmployee",
-          "targetField": "managerId",
-          "throughModel": null,
-          "description": "Direct reports who report to this manager."
-        }
-      ]
-    },
-    {
-      "name": "HspDiningCheck",
-      "title": "Dining Check",
-      "description": "`grandTotalAmount == subtotalAmount - compTotalAmount + taxAmount + tipAmount`; split child checks preserve exact `Decimal128` sum invariance; closed checks are immutable.",
-      "domainName": "Rapider Hospitality Suite",
+      "name": "HspDiningReservation",
+      "title": "Dining Reservation",
+      "datatableName": "HspDiningReservation",
+      "dataTableName": "HspDiningReservation",
       "domainKey": "HSP",
-      "datatableName": "HspDiningCheck",
-      "dataTableName": "HspDiningCheck",
-      "sqlTableName": "hsp_dining_check",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ id }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "id"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Dining Check, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
+      "domainName": "Rapider Hospitality Suite",
+      "description": "Individual or group dining reservation with time slot, party size, assigned table, dietary allergies, occasion tag, and deposit status.",
       "fields": [
         {
           "name": "id",
           "type": "string",
-          "description": "Primary key UUID.",
           "isPrimaryKey": true,
           "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
           "defaultFn": "uuidv4"
         },
         {
-          "name": "checkNumber",
+          "name": "reservationCode",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
-          "name": "serviceMode",
+          "name": "guestName",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "externalDeliveryRef",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "tableLabel",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "guestCount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
           "name": "guestPhone",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
-          "name": "allergyAlertBanner",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "lines",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "lineNetAmount",
+          "name": "partySize",
           "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
-          "name": "subtotalAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "compTotalAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "taxAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "tipAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "grandTotalAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
+          "name": "reservationDate",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "outlet",
-          "type": "belongsTo",
-          "sourceModel": "HspDiningCheck",
-          "sourceField": "outletId",
-          "targetModel": "HspRestaurantOutlet",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspDiningCheck outlet foreign key link to HspRestaurantOutlet."
-        }
-      ]
-    },
-    {
-      "name": "HspGroupBlock",
-      "title": "Group Block",
-      "description": "`pickedUpRoomsTotal <= allocatedRoomsTotal`; unpicked inventory automatically returns to general pool on `cutoffDate`.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspGroupBlock",
-      "dataTableName": "HspGroupBlock",
-      "sqlTableName": "hsp_group_block",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ name }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "name"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Group Block, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
+          "name": "slotTime",
           "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
+          "isRequired": true
         },
         {
-          "name": "blockCode",
+          "name": "shiftName",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
-          "name": "name",
+          "name": "zoneName",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
         },
         {
-          "name": "startDate",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "endDate",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "cutoffDate",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "washPercentage",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "allocatedRoomsTotal",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "pickedUpRoomsTotal",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "negotiatedRate",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "billingRoutingMode",
+          "name": "tableAssigned",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
         },
         {
-          "name": "status",
+          "name": "serverAssigned",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
         },
         {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "property",
-          "type": "belongsTo",
-          "sourceModel": "HspGroupBlock",
-          "sourceField": "propertyId",
-          "targetModel": "HspProperty",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspGroupBlock property foreign key link to HspProperty."
-        }
-      ]
-    },
-    {
-      "name": "HspGuestProfile",
-      "title": "Guest Profile",
-      "description": "Full ID numbers encrypted/masked for front-desk staff; `doNotRentFlag == true` blocks check-in without GM override `WorkItem`.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspGuestProfile",
-      "dataTableName": "HspGuestProfile",
-      "sqlTableName": "hsp_guest_profile",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ id }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "id"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Guest Profile, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
+          "name": "sourceChannel",
           "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
+          "isRequired": false
         },
         {
-          "name": "vipTier",
+          "name": "occasionTag",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "roomPreferences",
-          "type": "array",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": true
+          "isRequired": false
         },
         {
           "name": "dietaryNotes",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
         },
         {
-          "name": "documentType",
+          "name": "vipTier",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
         },
         {
-          "name": "maskedDocumentNumber",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "nationalityCode",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "lifetimeStays",
+          "name": "depositCapturedAmount",
           "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
         },
         {
-          "name": "lifetimeSpend",
+          "name": "noShowFeeAmount",
           "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
         },
         {
-          "name": "doNotRentFlag",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
+          "name": "liveCheckTotal",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "dinerProfileId",
+          "type": "string",
+          "isRequired": false
         },
         {
           "name": "status",
           "type": "string",
-          "description": "Lifecycle or record status.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "contact",
-          "type": "belongsTo",
-          "sourceModel": "HspGuestProfile",
-          "sourceField": "contactId",
-          "targetModel": "CrmContact",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspGuestProfile contact foreign key link to CrmContact."
-        }
-      ]
-    },
-    {
-      "name": "HspHotelReservation",
-      "title": "Hotel Reservation",
-      "description": "`departureAt > arrivalAt`; no two `CHECKED_IN` reservations may share `assignedRoomUnitId` for overlapping intervals; `externalBookingRef` + `channel` enforces idempotent OTA ingestion.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspHotelReservation",
-      "dataTableName": "HspHotelReservation",
-      "sqlTableName": "hsp_hotel_reservation",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ id }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "id"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Hotel Reservation, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "confirmationNumber",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "channel",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "externalBookingRef",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "arrivalAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "departureAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "nights",
+          "name": "version",
           "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "adults",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "children",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "ratePlanCode",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "nightlyRateAvg",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "totalAccommodationAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "allowRoomCharge",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        },
-        {
-          "name": "guestPhone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "property",
-          "type": "belongsTo",
-          "sourceModel": "HspHotelReservation",
-          "sourceField": "propertyId",
-          "targetModel": "HspProperty",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspHotelReservation property foreign key link to HspProperty."
-        }
-      ]
-    },
-    {
-      "name": "HspKitchenTicket",
-      "title": "Kitchen Ticket",
-      "description": "Synchronized pacing sets `scheduledFireAt = maxCourseCookTime - itemTargetCookSeconds`; `EXPO` cannot bump `DELIVERED_BUMPED` until child station lines are ready (unless Expo override).",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspKitchenTicket",
-      "dataTableName": "HspKitchenTicket",
-      "sqlTableName": "hsp_kitchen_ticket",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ id }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "id"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Kitchen Ticket, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "ticketNumber",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "course",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isRushRefire",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        },
-        {
-          "name": "scheduledFireAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "firedAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "startedAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "bumpedAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "actualCookSeconds",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "slaState",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "outlet",
-          "type": "belongsTo",
-          "sourceModel": "HspKitchenTicket",
-          "sourceField": "outletId",
-          "targetModel": "HspRestaurantOutlet",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspKitchenTicket outlet foreign key link to HspRestaurantOutlet."
-        }
-      ]
-    },
-    {
-      "name": "HspRestaurantOutlet",
-      "title": "Restaurant Outlet",
-      "description": "Controls active kitchen quote times and hotel PMS room-charge eligibility.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspRestaurantOutlet",
-      "dataTableName": "HspRestaurantOutlet",
-      "sqlTableName": "hsp_restaurant_outlet",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ name }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "name",
-          "code"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Restaurant Outlet, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "code",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "conceptType",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "timezone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "currencyCode",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "defaultQuoteMinutes",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "throttleMode",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "phone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "property",
-          "type": "belongsTo",
-          "sourceModel": "HspRestaurantOutlet",
-          "sourceField": "propertyId",
-          "targetModel": "HspProperty",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspRestaurantOutlet property foreign key link to HspProperty."
-        }
-      ]
-    },
-    {
-      "name": "MktEmailMessage",
-      "title": "Email Message",
-      "description": "Email composition specification, sender metadata, subject, templates, and delivery settings.",
-      "domainName": "Rapider Marketing Suite",
-      "domainKey": "MKT",
-      "datatableName": "MktEmailMessage",
-      "dataTableName": "MktEmailMessage",
-      "sqlTableName": "mkt_email_message",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ name }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "name"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Email Message, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "purpose",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "fromName",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "fromAddress",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "replyTo",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "subject",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "preheader",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "htmlAssetVersionId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "textContentRef",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "audienceId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "suppressionIds",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "campaignId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "scheduledAt",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "timezone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "providerConnectionId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "trackingPolicy",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "sends",
-          "type": "hasMany",
-          "sourceModel": "MktEmailMessage",
-          "sourceField": "id",
-          "targetModel": "MktEmailSend",
-          "targetField": "emailMessageId",
-          "throughModel": null,
-          "description": "MktEmailMessage relation to MktEmailSend."
-        },
-        {
-          "name": "variants",
-          "type": "hasMany",
-          "sourceModel": "MktEmailMessage",
-          "sourceField": "id",
-          "targetModel": "MktEmailVariant",
-          "targetField": "emailMessageId",
-          "throughModel": null,
-          "description": "MktEmailMessage relation to MktEmailVariant."
-        }
-      ]
-    },
-    {
-      "name": "MktSmsMessage",
-      "title": "SMS Message",
-      "description": "Text message copy, character encoding, estimated segment count, and regulatory consent checks.",
-      "domainName": "Rapider Marketing Suite",
-      "domainKey": "MKT",
-      "datatableName": "MktSmsMessage",
-      "dataTableName": "MktSmsMessage",
-      "sqlTableName": "mkt_sms_message",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ name }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "name"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating SMS Message, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "purpose",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "body",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "locale",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "audienceId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "consentPurpose",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "campaignId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "providerConnectionId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "senderId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "shortLinkPolicy",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "scheduledAt",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "timezone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "encoding",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "estimatedSegments",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "batches",
-          "type": "hasMany",
-          "sourceModel": "MktSmsMessage",
-          "sourceField": "id",
-          "targetModel": "MktSmsBatch",
-          "targetField": "smsMessageId",
-          "throughModel": null,
-          "description": "MktSmsMessage relation to MktSmsBatch."
-        }
-      ]
-    },
-    {
-      "name": "MktSurvey",
-      "title": "Survey",
-      "description": "Customer satisfaction survey result.",
-      "domainName": "Rapider Marketing Suite",
-      "domainKey": "MKT",
-      "datatableName": "MktSurvey",
-      "dataTableName": "MktSurvey",
-      "sqlTableName": "mkt_survey",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ rating }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "name"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Survey, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "purpose",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "schemaVersionId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "audienceId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "channel",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "campaignId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "anonymousMode",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        },
-        {
-          "name": "openAt",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "closeAt",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "responseLimit",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "locale",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": []
-    },
-    {
-      "name": "SupTicket",
-      "title": "Case",
-      "description": "Represents a customer support issue or ticket.",
-      "domainName": "Rapider Customer Support Suite",
-      "domainKey": "SUP",
-      "datatableName": "SupTicket",
-      "dataTableName": "SupTicket",
-      "sqlTableName": "sup_ticket",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ subject }} - {{ status }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "subject",
-          "description"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "subject",
-            "accountId"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "status",
-            "priority"
-          ],
-          "additionalPrompt": "Set priority to High if words like 'urgent' or 'critical' are used.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "accountId"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": [
-            {
-              "description": "Cannot modify closed cases.",
-              "where": {}
-            }
-          ]
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [],
-          "maskedFields": [],
-          "additionalPrompt": "Always list critical cases first."
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": [
-            {
-              "description": "Cannot delete resolved cases.",
-              "where": {}
-            }
-          ]
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "accountId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "contactId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "subject",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "priority",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "ticketNumber",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "channel",
-          "type": "string",
-          "description": "Allowed values: PORTAL, EMAIL, CHAT, VOICE, FIELD_SERVICE, SOCIAL, API",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "enumValues": [
-            "PORTAL",
-            "EMAIL",
-            "CHAT",
-            "VOICE",
-            "FIELD_SERVICE",
-            "SOCIAL",
-            "API"
-          ],
-          "options": [
-            "PORTAL",
-            "EMAIL",
-            "CHAT",
-            "VOICE",
-            "FIELD_SERVICE",
-            "SOCIAL",
-            "API"
-          ]
-        },
-        {
-          "name": "queueId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "SupQueue",
-          "referenceField": "id"
-        },
-        {
-          "name": "assetId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "referenceModel": "OpsOperationsAsset",
-          "referenceField": "id"
-        },
-        {
-          "name": "firstResponseDueAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "resolutionDueAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "csatScore",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "assigneeId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "slaPolicyId",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "account",
-          "type": "belongsTo",
-          "sourceModel": "SupTicket",
-          "sourceField": "accountId",
-          "targetModel": "CrmAccount",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "The account this case is associated with."
-        },
-        {
-          "name": "contact",
-          "type": "belongsTo",
-          "sourceModel": "SupTicket",
-          "sourceField": "contactId",
-          "targetModel": "CrmContact",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "The individual contact associated with this case."
-        },
-        {
-          "name": "queue",
-          "type": "belongsTo",
-          "sourceModel": "SupTicket",
-          "sourceField": "queueId",
-          "targetModel": "SupQueue",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "SupTicket queue foreign key link to SupQueue."
-        },
-        {
-          "name": "assigneeEmployee",
-          "type": "belongsTo",
-          "sourceModel": "SupTicket",
-          "sourceField": "assigneeEmployeeId",
-          "targetModel": "HrEmployee",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "SupTicket assigneeEmployee foreign key link to HrEmployee."
-        },
-        {
-          "name": "slaPolicy",
-          "type": "belongsTo",
-          "sourceModel": "SupTicket",
-          "sourceField": "slaPolicyId",
-          "targetModel": "SupSlaPolicy",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "SupTicket slaPolicy foreign key link to SupSlaPolicy."
-        },
-        {
-          "name": "asset",
-          "type": "belongsTo",
-          "sourceModel": "SupTicket",
-          "sourceField": "assetId",
-          "targetModel": "OpsOperationsAsset",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "SupTicket asset foreign key link to OpsOperationsAsset."
-        }
-      ]
-    },
-    {
-      "name": "HspDiningZone",
-      "title": "Dining Zone",
-      "description": "Setting `WEATHER_PAUSED` halts new online patio bookings and flags existing bookings for indoor relocation.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspDiningZone",
-      "dataTableName": "HspDiningZone",
-      "sqlTableName": "hsp_dining_zone",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ name }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "name",
-          "code"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Dining Zone, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "code",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "zoneType",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isWeatherContingent",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        },
-        {
-          "name": "availabilityState",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "Lifecycle or record status.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "outlet",
-          "type": "belongsTo",
-          "sourceModel": "HspDiningZone",
-          "sourceField": "outletId",
-          "targetModel": "HspRestaurantOutlet",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspDiningZone outlet foreign key link to HspRestaurantOutlet."
+          "isRequired": false
         }
       ]
     },
     {
       "name": "HspDiningFloorTable",
       "title": "Dining Floor Table",
-      "description": "`maxCovers >= minCovers >= 1`; cannot seat two active parties on the same `HspDiningFloorTable` simultaneously.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
       "datatableName": "HspDiningFloorTable",
       "dataTableName": "HspDiningFloorTable",
-      "sqlTableName": "hsp_dining_floor_table",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ id }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "id"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Dining Floor Table, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
+      "domainKey": "HSP",
+      "domainName": "Rapider Hospitality Suite",
+      "description": "Physical or combinable restaurant table with seating capacity, shape, attributes, assigned server, and live course progression status.",
       "fields": [
         {
           "name": "id",
           "type": "string",
-          "description": "Primary key UUID.",
           "isPrimaryKey": true,
           "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
           "defaultFn": "uuidv4"
         },
         {
           "name": "tableNumber",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
+        },
+        {
+          "name": "zoneName",
+          "type": "string",
+          "isRequired": true
         },
         {
           "name": "minCovers",
           "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
           "name": "maxCovers",
           "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
           "name": "shape",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
         },
         {
           "name": "attributes",
-          "type": "array",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": true
+          "type": "string",
+          "isRequired": false
         },
         {
-          "name": "combinableWithTableIds",
-          "type": "array",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": true
+          "name": "combinableWith",
+          "type": "string",
+          "isRequired": false
         },
         {
           "name": "comboPriorityRank",
           "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
+        },
+        {
+          "name": "assignedServerName",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "currentPartyName",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "currentPartySize",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "seatedAtTime",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "elapsedMinutes",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "targetTurnMinutes",
+          "type": "number",
+          "isRequired": false
         },
         {
           "name": "liveStatus",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
           "name": "status",
           "type": "string",
-          "description": "Lifecycle or record status.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "outlet",
-          "type": "belongsTo",
-          "sourceModel": "HspDiningFloorTable",
-          "sourceField": "outletId",
-          "targetModel": "HspRestaurantOutlet",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspDiningFloorTable outlet foreign key link to HspRestaurantOutlet."
-        }
-      ]
-    },
-    {
-      "name": "HspDiningShift",
-      "title": "Dining Shift",
-      "description": "Online booking requests exceeding `maxCoversPer15Min` in a slot are rejected even if physical tables exist (protecting `#170` kitchen pacing).",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspDiningShift",
-      "dataTableName": "HspDiningShift",
-      "sqlTableName": "hsp_dining_shift",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ name }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "name"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Dining Shift, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "daysOfWeek",
-          "type": "array",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": true
-        },
-        {
-          "name": "startTime",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "lastSeatingTime",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "maxCoversPer15Min",
+          "name": "version",
           "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "turnMinutesByPartySize",
-          "type": "object",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "policyType",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "feePerCover",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "cancelCutoffHours",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "Lifecycle or record status.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "outlet",
-          "type": "belongsTo",
-          "sourceModel": "HspDiningShift",
-          "sourceField": "outletId",
-          "targetModel": "HspRestaurantOutlet",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspDiningShift outlet foreign key link to HspRestaurantOutlet."
-        }
-      ]
-    },
-    {
-      "name": "HspDiningExperience",
-      "title": "Dining Experience",
-      "description": "Prepaid `PER_PERSON_TICKET` bookings require `FinPaymentIntent` capture prior to status `CONFIRMED`.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspDiningExperience",
-      "dataTableName": "HspDiningExperience",
-      "sqlTableName": "hsp_dining_experience",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ title }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "title",
-          "code"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Dining Experience, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "code",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "title",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "pricingMode",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "pricePerUnit",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "taxRatePct",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "includedAddOns",
-          "type": "array",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": true
-        },
-        {
-          "name": "isTransferable",
-          "type": "boolean",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "outlet",
-          "type": "belongsTo",
-          "sourceModel": "HspDiningExperience",
-          "sourceField": "outletId",
-          "targetModel": "HspRestaurantOutlet",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspDiningExperience outlet foreign key link to HspRestaurantOutlet."
-        }
-      ]
-    },
-    {
-      "name": "HspDinerProfile",
-      "title": "Diner Profile",
-      "description": "`avgSpendPerCover` recalculates deterministically from settled `#170` `HspDiningCheck` events; allergy edits propagate to all upcoming `HspDiningReservation`s.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspDinerProfile",
-      "dataTableName": "HspDinerProfile",
-      "sqlTableName": "hsp_diner_profile",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ id }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "id"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Diner Profile, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "autoTags",
-          "type": "array",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": true
-        },
-        {
-          "name": "severeAllergies",
-          "type": "array",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": true
-        },
-        {
-          "name": "dietaryPreferences",
-          "type": "array",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": true
-        },
-        {
-          "name": "seatingPreferences",
-          "type": "array",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": true
-        },
-        {
-          "name": "totalVisits",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "noShowCount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "lifetimeSpend",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "avgSpendPerCover",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "specialDates",
-          "type": "object",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "Lifecycle or record status.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "contact",
-          "type": "belongsTo",
-          "sourceModel": "HspDinerProfile",
-          "sourceField": "contactId",
-          "targetModel": "CrmContact",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspDinerProfile contact foreign key link to CrmContact."
-        }
-      ]
-    },
-    {
-      "name": "HspDiningReservation",
-      "title": "Dining Reservation",
-      "description": "No two overlapping `BOOKED`/`CONFIRMED_BY_GUEST`/`SEATED` reservations may lock the same `assignedTableIds`; transitioning to `NO_SHOW_WAIVED` above host cap requires approved Home `WorkItem`.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
-      "datatableName": "HspDiningReservation",
-      "dataTableName": "HspDiningReservation",
-      "sqlTableName": "hsp_dining_reservation",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ id }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "id"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Dining Reservation, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
-      "fields": [
-        {
-          "name": "id",
-          "type": "string",
-          "description": "Primary key UUID.",
-          "isPrimaryKey": true,
-          "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
-          "defaultFn": "uuidv4"
-        },
-        {
-          "name": "reservationCode",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "sourceChannel",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "reservationDate",
-          "type": "date",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "slotStartAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "expectedClearAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "partySize",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "guestPhone",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "occasionTag",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "dietaryNotes",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "depositCapturedAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "noShowFeeAmount",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "status",
-          "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
-        }
-      ],
-      "relations": [
-        {
-          "name": "outlet",
-          "type": "belongsTo",
-          "sourceModel": "HspDiningReservation",
-          "sourceField": "outletId",
-          "targetModel": "HspRestaurantOutlet",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspDiningReservation outlet foreign key link to HspRestaurantOutlet."
+          "isRequired": false
         }
       ]
     },
     {
       "name": "HspWaitlistEntry",
-      "title": "Waitlist Entry",
-      "description": "Paging sets `holdExpiresAt = pagedAt + graceMinutes`; converting to `SEATED_CONVERTED` atomically seats the target table and opens `#170` `HspDiningCheck`.",
-      "domainName": "Rapider Hospitality Suite",
-      "domainKey": "HSP",
+      "title": "Walk-In & Notify Waitlist Entry",
       "datatableName": "HspWaitlistEntry",
       "dataTableName": "HspWaitlistEntry",
-      "sqlTableName": "hsp_waitlist_entry",
-      "isolationScope": "ENTERPRISE_SHARED",
-      "titleFieldTemplate": "{{ id }}",
-      "scope": {
-        "where": {}
-      },
-      "aiAgentConfig": {
-        "vectorSearchFields": [
-          "id"
-        ],
-        "planning": {
-          "availableOperations": [
-            "create",
-            "update",
-            "read",
-            "delete"
-          ]
-        },
-        "entityItemCreate": {
-          "requiredFields": [
-            "id"
-          ],
-          "immutableFields": [
-            "isDeleted"
-          ],
-          "requiredRelations": [],
-          "autoGenerateFields": [
-            "id"
-          ],
-          "additionalPrompt": "When creating Waitlist Entry, ensure required attributes are populated.",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": ""
-        },
-        "entityItemUpdate": {
-          "immutableFields": [
-            "id"
-          ],
-          "autoGenerateFields": [],
-          "additionalPrompt": "",
-          "requireUserConfirmation": false,
-          "customValidationPrompt": "",
-          "restrictedStates": []
-        },
-        "entityRead": {
-          "defaultPageSize": 20,
-          "defaultContextLimit": 30,
-          "hiddenFields": [
-            "isDeleted"
-          ],
-          "maskedFields": [],
-          "additionalPrompt": ""
-        },
-        "entityItemDelete": {
-          "requireCaptchaConfirmation": true,
-          "cascadingRelations": [],
-          "restrictedStates": []
-        }
-      },
+      "domainKey": "HSP",
+      "domainName": "Rapider Hospitality Suite",
+      "description": "Live walk-in party or Priority Notify cancellation subscriber with AI wait quote, two-way SMS paging status, and grace timer.",
       "fields": [
         {
           "name": "id",
           "type": "string",
-          "description": "Primary key UUID.",
           "isPrimaryKey": true,
           "isRequired": true,
-          "isHidden": false,
-          "isArray": false,
           "defaultFn": "uuidv4"
         },
         {
-          "name": "entryType",
+          "name": "waitlistCode",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
-        },
-        {
-          "name": "partySize",
-          "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
           "name": "guestName",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
           "name": "guestPhone",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
+        },
+        {
+          "name": "partySize",
+          "type": "number",
+          "isRequired": true
+        },
+        {
+          "name": "entryType",
+          "type": "string",
+          "isRequired": true
         },
         {
           "name": "preferredZoneType",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": false
         },
         {
           "name": "quotedWaitMinutes",
           "type": "number",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
-          "name": "joinedAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "name": "elapsedWaitMinutes",
+          "type": "number",
+          "isRequired": false
         },
         {
-          "name": "pagedAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "name": "joinedAtTime",
+          "type": "string",
+          "isRequired": false
         },
         {
           "name": "holdExpiresAt",
-          "type": "datetime",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "seatingNotes",
+          "type": "string",
+          "isRequired": false
         },
         {
           "name": "status",
           "type": "string",
-          "description": "",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false
+          "isRequired": true
         },
         {
-          "name": "isDeleted",
-          "type": "boolean",
-          "description": "Soft deletion flag.",
-          "isRequired": false,
-          "isHidden": false,
-          "isArray": false,
-          "default": false
+          "name": "version",
+          "type": "number",
+          "isRequired": false
         }
-      ],
-      "relations": [
+      ]
+    },
+    {
+      "name": "HspDinerProfile",
+      "title": "Diner 360 Profile",
+      "datatableName": "HspDinerProfile",
+      "dataTableName": "HspDinerProfile",
+      "domainKey": "HSP",
+      "domainName": "Rapider Hospitality Suite",
+      "description": "Operator-owned Diner 360 CRM record storing hospitality auto-tags, severe allergies, table/wine preferences, hotel stay link, and lifetime spend.",
+      "fields": [
         {
-          "name": "outlet",
-          "type": "belongsTo",
-          "sourceModel": "HspWaitlistEntry",
-          "sourceField": "outletId",
-          "targetModel": "HspRestaurantOutlet",
-          "targetField": "id",
-          "throughModel": null,
-          "description": "HspWaitlistEntry outlet foreign key link to HspRestaurantOutlet."
+          "name": "id",
+          "type": "string",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "dinerCode",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "fullName",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "autoTags",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "severeAllergies",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "dietaryPreferences",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "seatingPreferences",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "favoriteBeverage",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "hotelRoomNumber",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "totalVisits",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "noShowCount",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "lifetimeSpend",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "avgSpendPerCover",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "specialOccasion",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "version",
+          "type": "number",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "name": "HspDiningExperience",
+      "title": "Prepaid Dining Experience",
+      "datatableName": "HspDiningExperience",
+      "dataTableName": "HspDiningExperience",
+      "domainKey": "HSP",
+      "domainName": "Rapider Hospitality Suite",
+      "description": "Prepaid tasting menu ticket, sommelier wine pairing dinner, or minimum-spend rooftop cabana package.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "zoneName",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "pricingMode",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "pricePerUnit",
+          "type": "number",
+          "isRequired": true
+        },
+        {
+          "name": "taxRatePct",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "seatsTotal",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "seatsBooked",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "includedAddOns",
+          "type": "string",
+          "isRequired": false
+        },
+        {
+          "name": "isTransferable",
+          "type": "boolean",
+          "isRequired": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "version",
+          "type": "number",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "name": "HspDiningZone",
+      "title": "Dining Zone",
+      "datatableName": "HspDiningZone",
+      "dataTableName": "HspDiningZone",
+      "domainKey": "HSP",
+      "domainName": "Rapider Hospitality Suite",
+      "description": "Physical dining area (Main Dining Room, Chef's Counter, Garden Patio, Bar Lounge, Private Cellar) with weather-pause controls.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "zoneType",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "tableCount",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "seatCapacity",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "isWeatherContingent",
+          "type": "boolean",
+          "isRequired": false
+        },
+        {
+          "name": "availabilityState",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "revPashTonight",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "version",
+          "type": "number",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "name": "HspDiningShift",
+      "title": "Dining Shift & Pacing Template",
+      "datatableName": "HspDiningShift",
+      "dataTableName": "HspDiningShift",
+      "domainKey": "HSP",
+      "domainName": "Rapider Hospitality Suite",
+      "description": "Service shift rules defining 15-minute cover caps, party-size turn durations, and deposit/no-show fee policies.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "isPrimaryKey": true,
+          "isRequired": true,
+          "defaultFn": "uuidv4"
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "serviceHours",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "maxCoversPer15Min",
+          "type": "number",
+          "isRequired": true
+        },
+        {
+          "name": "turnMinutes2Pax",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "turnMinutes4Pax",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "turnMinutes6PlusPax",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "policyType",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "feePerCover",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "cancelCutoffHours",
+          "type": "number",
+          "isRequired": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "isRequired": true
+        },
+        {
+          "name": "version",
+          "type": "number",
+          "isRequired": false
         }
       ]
     }
@@ -5394,146 +662,185 @@
   "webPages": [
     {
       "name": "Shift & Cover Pulse",
+      "title": "Host Stand",
+      "pageTitle": "Shift & Cover Pulse",
+      "group": "Host Stand",
       "route": "dashboard",
       "htmlFilePath": "pages/dashboard/dashboard.html",
-      "title": "Shift & Cover Pulse",
-      "group": "Host Stand",
-      "icon": "fas fa-home",
+      "icon": "fas fa-chart-line",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 1,
-      "developmentDetails": "Live KPI cards (countSWR): Booked Covers vs. Capacity, Walk-Ins Seated, Active Waitlist Count, Current RevPASH, No-Show Rate %, 15-min arrival pacing bar chart."
+      "description": "Real-time dinner shift cover pacing, 15-minute kitchen arrival wave guardrails, RevPASH yield, and VIP/allergy lineup alerts.",
+      "type": "AppPage"
     },
     {
       "name": "Live Floor & Seating Board",
+      "title": "Host Stand",
+      "pageTitle": "Live Floor & Seating Board",
+      "group": "Host Stand",
       "route": "host-board",
       "htmlFilePath": "pages/host-board/host-board.html",
-      "title": "Live Floor & Seating Board",
-      "group": "Host Stand",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-chair",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 2,
-      "developmentDetails": "Dual view: <rapider-kanban> (UPCOMING, ARRIVED_AT_HOST, SEATED_DINING, MAINS_ON_TABLE, CHECK_DROPPED, BUSING_DIRTY) + visual zone/table grid with server rotation counters."
+      "description": "Interactive multi-zone floor table map, server cover rotation balancer, and live party course stage kanban.",
+      "type": "AppPage"
     },
     {
       "name": "Walk-In & Notify Waitlist",
+      "title": "Host Stand",
+      "pageTitle": "Walk-In & Notify Waitlist",
+      "group": "Host Stand",
       "route": "waitlist",
       "htmlFilePath": "pages/waitlist/waitlist.html",
-      "title": "Walk-In & Notify Waitlist",
-      "group": "Host Stand",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-clock",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 3,
-      "developmentDetails": "Live HspWaitlistEntry queue (findSWR), #activeFilterTagsBar with Clear all, <rapider-phone-input> quick-add, AI wait-quote badge, one-tap Page SMS & Seat Now actions."
+      "description": "Live walk-in queue with AI wait-minute quotes, two-way SMS table-ready paging, 10-minute grace timers, and Priority Notify slot backfill.",
+      "type": "AppPage"
     },
     {
       "name": "Reservation Book",
+      "title": "Guest & Experiences",
+      "pageTitle": "Reservation Book",
+      "group": "Guest & Experiences",
       "route": "reservations",
       "htmlFilePath": "pages/reservations/reservations.html",
-      "title": "Reservation Book",
-      "group": "Guest & Experiences",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-book-open",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 4,
-      "developmentDetails": "Searchable HspDiningReservation ledger across dates/shifts/channels/VIP tags, #activeFilterTagsBar, deposit status chips, clickable #RES-... -> reservation-detail."
+      "description": "Master reservation ledger across shifts, booking channels, table assignments, severe allergy flags, and prepaid deposits.",
+      "type": "AppPage"
     },
     {
       "name": "Diner 360 Guestbook",
+      "title": "Guest & Experiences",
+      "pageTitle": "Diner 360 Guestbook",
+      "group": "Guest & Experiences",
       "route": "diner-directory",
       "htmlFilePath": "pages/diner-directory/diner-directory.html",
-      "title": "Diner 360 Guestbook",
-      "group": "Guest & Experiences",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-address-book",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 5,
-      "developmentDetails": "HspDinerProfile CRM table with auto-tags (VIP, ALLERGY, IN_HOUSE_HOTEL, REGULAR), lifetime visits, avg spend/cover (Decimal128), clickable diner name -> diner-detail."
+      "description": "Operator-owned hospitality CRM tracking VIP tiers, severe allergies, wine/seating preferences, in-house hotel room links, and per-cover spend.",
+      "type": "AppPage"
     },
     {
       "name": "Prepaid Tickets & Tasting",
+      "title": "Guest & Experiences",
+      "pageTitle": "Prepaid Tickets & Tasting",
+      "group": "Guest & Experiences",
       "route": "experiences",
       "htmlFilePath": "pages/experiences/experiences.html",
-      "title": "Prepaid Tickets & Tasting",
-      "group": "Guest & Experiences",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-wine-glass-alt",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 6,
-      "developmentDetails": "HspDiningExperience catalog (Chef's Counter, Wine Pairing Dinner, Rooftop Cabana Minimums), ticket inventory sold/remaining, Decimal128 prepayment totals."
+      "description": "Prepaid Chef's Counter tasting tickets, sommelier wine dinners, and minimum-spend rooftop cabanas with live seat inventory.",
+      "type": "AppPage"
     },
     {
       "name": "Floor Plans & Table Combos",
+      "title": "Governance",
+      "pageTitle": "Floor Plans & Table Combos",
+      "group": "Governance",
       "route": "floor-zones",
       "htmlFilePath": "pages/floor-zones/floor-zones.html",
-      "title": "Floor Plans & Table Combos",
-      "group": "Governance",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-border-all",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 7,
-      "developmentDetails": "HspDiningZone and HspDiningFloorTable configurator, combinable table pairs/trios with priority rank, ADA/patio attributes, weather-pause toggle."
+      "description": "Dining room zones, weather-contingent patio pause controls, physical table inventory, and combinable 6-to-10-top table rules.",
+      "type": "AppPage"
     },
     {
       "name": "Shifts, Pacing & Policies",
+      "title": "Governance",
+      "pageTitle": "Shifts, Pacing & Policies",
+      "group": "Governance",
       "route": "shifts-pacing",
       "htmlFilePath": "pages/shifts-pacing/shifts-pacing.html",
-      "title": "Shifts, Pacing & Policies",
-      "group": "Governance",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-sliders-h",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 8,
-      "developmentDetails": "HspDiningShift rules: 15-min cover caps, party-size turn minutes, VIP house holds, peak card-hold / no-show fee rules (Decimal128)."
+      "description": "15-minute arrival cover caps, party-size turn-time matrices, peak card-hold policies, and GM no-show waiver governance.",
+      "type": "AppPage"
     },
     {
       "name": "Pre-Shift Chit & RevPASH",
+      "title": "Governance",
+      "pageTitle": "Pre-Shift Chit & RevPASH",
+      "group": "Governance",
       "route": "preshift-analytics",
       "htmlFilePath": "pages/preshift-analytics/preshift-analytics.html",
-      "title": "Pre-Shift Chit & RevPASH",
-      "group": "Governance",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-clipboard-list",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 9,
-      "developmentDetails": "Printable/digital pre-service lineup roster (VIPs, severe allergies, occasions, #169 room guests) plus RevPASH, turn-time variance, and no-show waiver audit metrics."
+      "description": "Daily kitchen & floor pre-service lineup sheet (VIPs, severe allergies, celebrations) and Revenue Per Available Seat Hour (RevPASH) analytics.",
+      "type": "AppPage"
     },
     {
       "name": "Reservation & Seating 360",
+      "title": "Hidden",
+      "pageTitle": "Reservation & Seating 360",
+      "group": "Hidden",
       "route": "reservation-detail",
       "htmlFilePath": "pages/reservation-detail/reservation-detail.html",
-      "title": "Reservation & Seating 360",
-      "group": "(Hidden)",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-calendar-check",
       "displayInMenu": false,
+      "displayOnMenu": false,
       "order": 10,
-      "developmentDetails": "Full HspDiningReservation cockpit (?id=...): table assignment, SMS confirmation log, FinPaymentIntent deposit/hold status, linked #170 HspDiningCheck live total, Back to list."
+      "description": "360-degree reservation cockpit with table assignment, allergy banner, deposit hold status, linked POS dining check, and SMS log.",
+      "type": "AppPage"
     },
     {
       "name": "Diner 360 Profile",
+      "title": "Hidden",
+      "pageTitle": "Diner 360 Profile",
+      "group": "Hidden",
       "route": "diner-detail",
       "htmlFilePath": "pages/diner-detail/diner-detail.html",
-      "title": "Diner 360 Profile",
-      "group": "(Hidden)",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-user-tie",
       "displayInMenu": false,
+      "displayOnMenu": false,
       "order": 11,
-      "developmentDetails": "Complete HspDinerProfile (?id=...): dietary allergies, favorite tables/wines, visit & #170 item history, #169 hotel stay badge, SupTicket service recovery notes, Back to Guestbook."
+      "description": "Complete guest hospitality profile with dietary allergies, favorite tables and wines, hotel guest badge, and visit spend history.",
+      "type": "AppPage"
     },
     {
       "name": "Book / Edit Reservation",
+      "title": "Hidden",
+      "pageTitle": "Book / Edit Reservation",
+      "group": "Hidden",
       "route": "reservation-drawer",
       "htmlFilePath": "pages/reservation-drawer/reservation-drawer.html",
-      "title": "Book / Edit Reservation",
-      "group": "(Hidden)",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-calendar-plus",
       "displayInMenu": false,
+      "displayOnMenu": false,
       "order": 12,
-      "developmentDetails": "Sliding drawer checking real-time 15-min pacing & table combos, <rapider-phone-input> guest mobile, allergy/occasion selectors, deposit link, try/catch/finally save reset, auto-close."
+      "description": "Host-stand booking drawer with real-time 15-min pacing validation, international phone input, table combinations, and allergy notes.",
+      "type": "AppPage"
     },
     {
       "name": "Add Walk-In / Notify Request",
+      "title": "Hidden",
+      "pageTitle": "Add Walk-In / Notify Request",
+      "group": "Hidden",
       "route": "waitlist-drawer",
       "htmlFilePath": "pages/waitlist-drawer/waitlist-drawer.html",
-      "title": "Add Walk-In / Notify Request",
-      "group": "(Hidden)",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-user-clock",
       "displayInMenu": false,
+      "displayOnMenu": false,
       "order": 13,
-      "developmentDetails": "Fast host-stand sliding drawer with <rapider-phone-input>, party size, zone preference, grounded AI wait-minute quote, and instant SWR list update on save."
+      "description": "Fast walk-in and Priority Notify waitlist drawer with grounded AI wait-time quote and SMS paging.",
+      "type": "AppPage"
     }
   ],
   "workflows": [],
@@ -5542,146 +849,185 @@
   "pages": [
     {
       "name": "Shift & Cover Pulse",
+      "title": "Host Stand",
+      "pageTitle": "Shift & Cover Pulse",
+      "group": "Host Stand",
       "route": "dashboard",
       "htmlFilePath": "pages/dashboard/dashboard.html",
-      "title": "Shift & Cover Pulse",
-      "group": "Host Stand",
-      "icon": "fas fa-home",
+      "icon": "fas fa-chart-line",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 1,
-      "developmentDetails": "Live KPI cards (countSWR): Booked Covers vs. Capacity, Walk-Ins Seated, Active Waitlist Count, Current RevPASH, No-Show Rate %, 15-min arrival pacing bar chart."
+      "description": "Real-time dinner shift cover pacing, 15-minute kitchen arrival wave guardrails, RevPASH yield, and VIP/allergy lineup alerts.",
+      "type": "AppPage"
     },
     {
       "name": "Live Floor & Seating Board",
+      "title": "Host Stand",
+      "pageTitle": "Live Floor & Seating Board",
+      "group": "Host Stand",
       "route": "host-board",
       "htmlFilePath": "pages/host-board/host-board.html",
-      "title": "Live Floor & Seating Board",
-      "group": "Host Stand",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-chair",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 2,
-      "developmentDetails": "Dual view: <rapider-kanban> (UPCOMING, ARRIVED_AT_HOST, SEATED_DINING, MAINS_ON_TABLE, CHECK_DROPPED, BUSING_DIRTY) + visual zone/table grid with server rotation counters."
+      "description": "Interactive multi-zone floor table map, server cover rotation balancer, and live party course stage kanban.",
+      "type": "AppPage"
     },
     {
       "name": "Walk-In & Notify Waitlist",
+      "title": "Host Stand",
+      "pageTitle": "Walk-In & Notify Waitlist",
+      "group": "Host Stand",
       "route": "waitlist",
       "htmlFilePath": "pages/waitlist/waitlist.html",
-      "title": "Walk-In & Notify Waitlist",
-      "group": "Host Stand",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-clock",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 3,
-      "developmentDetails": "Live HspWaitlistEntry queue (findSWR), #activeFilterTagsBar with Clear all, <rapider-phone-input> quick-add, AI wait-quote badge, one-tap Page SMS & Seat Now actions."
+      "description": "Live walk-in queue with AI wait-minute quotes, two-way SMS table-ready paging, 10-minute grace timers, and Priority Notify slot backfill.",
+      "type": "AppPage"
     },
     {
       "name": "Reservation Book",
+      "title": "Guest & Experiences",
+      "pageTitle": "Reservation Book",
+      "group": "Guest & Experiences",
       "route": "reservations",
       "htmlFilePath": "pages/reservations/reservations.html",
-      "title": "Reservation Book",
-      "group": "Guest & Experiences",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-book-open",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 4,
-      "developmentDetails": "Searchable HspDiningReservation ledger across dates/shifts/channels/VIP tags, #activeFilterTagsBar, deposit status chips, clickable #RES-... -> reservation-detail."
+      "description": "Master reservation ledger across shifts, booking channels, table assignments, severe allergy flags, and prepaid deposits.",
+      "type": "AppPage"
     },
     {
       "name": "Diner 360 Guestbook",
+      "title": "Guest & Experiences",
+      "pageTitle": "Diner 360 Guestbook",
+      "group": "Guest & Experiences",
       "route": "diner-directory",
       "htmlFilePath": "pages/diner-directory/diner-directory.html",
-      "title": "Diner 360 Guestbook",
-      "group": "Guest & Experiences",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-address-book",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 5,
-      "developmentDetails": "HspDinerProfile CRM table with auto-tags (VIP, ALLERGY, IN_HOUSE_HOTEL, REGULAR), lifetime visits, avg spend/cover (Decimal128), clickable diner name -> diner-detail."
+      "description": "Operator-owned hospitality CRM tracking VIP tiers, severe allergies, wine/seating preferences, in-house hotel room links, and per-cover spend.",
+      "type": "AppPage"
     },
     {
       "name": "Prepaid Tickets & Tasting",
+      "title": "Guest & Experiences",
+      "pageTitle": "Prepaid Tickets & Tasting",
+      "group": "Guest & Experiences",
       "route": "experiences",
       "htmlFilePath": "pages/experiences/experiences.html",
-      "title": "Prepaid Tickets & Tasting",
-      "group": "Guest & Experiences",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-wine-glass-alt",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 6,
-      "developmentDetails": "HspDiningExperience catalog (Chef's Counter, Wine Pairing Dinner, Rooftop Cabana Minimums), ticket inventory sold/remaining, Decimal128 prepayment totals."
+      "description": "Prepaid Chef's Counter tasting tickets, sommelier wine dinners, and minimum-spend rooftop cabanas with live seat inventory.",
+      "type": "AppPage"
     },
     {
       "name": "Floor Plans & Table Combos",
+      "title": "Governance",
+      "pageTitle": "Floor Plans & Table Combos",
+      "group": "Governance",
       "route": "floor-zones",
       "htmlFilePath": "pages/floor-zones/floor-zones.html",
-      "title": "Floor Plans & Table Combos",
-      "group": "Governance",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-border-all",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 7,
-      "developmentDetails": "HspDiningZone and HspDiningFloorTable configurator, combinable table pairs/trios with priority rank, ADA/patio attributes, weather-pause toggle."
+      "description": "Dining room zones, weather-contingent patio pause controls, physical table inventory, and combinable 6-to-10-top table rules.",
+      "type": "AppPage"
     },
     {
       "name": "Shifts, Pacing & Policies",
+      "title": "Governance",
+      "pageTitle": "Shifts, Pacing & Policies",
+      "group": "Governance",
       "route": "shifts-pacing",
       "htmlFilePath": "pages/shifts-pacing/shifts-pacing.html",
-      "title": "Shifts, Pacing & Policies",
-      "group": "Governance",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-sliders-h",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 8,
-      "developmentDetails": "HspDiningShift rules: 15-min cover caps, party-size turn minutes, VIP house holds, peak card-hold / no-show fee rules (Decimal128)."
+      "description": "15-minute arrival cover caps, party-size turn-time matrices, peak card-hold policies, and GM no-show waiver governance.",
+      "type": "AppPage"
     },
     {
       "name": "Pre-Shift Chit & RevPASH",
+      "title": "Governance",
+      "pageTitle": "Pre-Shift Chit & RevPASH",
+      "group": "Governance",
       "route": "preshift-analytics",
       "htmlFilePath": "pages/preshift-analytics/preshift-analytics.html",
-      "title": "Pre-Shift Chit & RevPASH",
-      "group": "Governance",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-clipboard-list",
       "displayInMenu": true,
+      "displayOnMenu": true,
       "order": 9,
-      "developmentDetails": "Printable/digital pre-service lineup roster (VIPs, severe allergies, occasions, #169 room guests) plus RevPASH, turn-time variance, and no-show waiver audit metrics."
+      "description": "Daily kitchen & floor pre-service lineup sheet (VIPs, severe allergies, celebrations) and Revenue Per Available Seat Hour (RevPASH) analytics.",
+      "type": "AppPage"
     },
     {
       "name": "Reservation & Seating 360",
+      "title": "Hidden",
+      "pageTitle": "Reservation & Seating 360",
+      "group": "Hidden",
       "route": "reservation-detail",
       "htmlFilePath": "pages/reservation-detail/reservation-detail.html",
-      "title": "Reservation & Seating 360",
-      "group": "(Hidden)",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-calendar-check",
       "displayInMenu": false,
+      "displayOnMenu": false,
       "order": 10,
-      "developmentDetails": "Full HspDiningReservation cockpit (?id=...): table assignment, SMS confirmation log, FinPaymentIntent deposit/hold status, linked #170 HspDiningCheck live total, Back to list."
+      "description": "360-degree reservation cockpit with table assignment, allergy banner, deposit hold status, linked POS dining check, and SMS log.",
+      "type": "AppPage"
     },
     {
       "name": "Diner 360 Profile",
+      "title": "Hidden",
+      "pageTitle": "Diner 360 Profile",
+      "group": "Hidden",
       "route": "diner-detail",
       "htmlFilePath": "pages/diner-detail/diner-detail.html",
-      "title": "Diner 360 Profile",
-      "group": "(Hidden)",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-user-tie",
       "displayInMenu": false,
+      "displayOnMenu": false,
       "order": 11,
-      "developmentDetails": "Complete HspDinerProfile (?id=...): dietary allergies, favorite tables/wines, visit & #170 item history, #169 hotel stay badge, SupTicket service recovery notes, Back to Guestbook."
+      "description": "Complete guest hospitality profile with dietary allergies, favorite tables and wines, hotel guest badge, and visit spend history.",
+      "type": "AppPage"
     },
     {
       "name": "Book / Edit Reservation",
+      "title": "Hidden",
+      "pageTitle": "Book / Edit Reservation",
+      "group": "Hidden",
       "route": "reservation-drawer",
       "htmlFilePath": "pages/reservation-drawer/reservation-drawer.html",
-      "title": "Book / Edit Reservation",
-      "group": "(Hidden)",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-calendar-plus",
       "displayInMenu": false,
+      "displayOnMenu": false,
       "order": 12,
-      "developmentDetails": "Sliding drawer checking real-time 15-min pacing & table combos, <rapider-phone-input> guest mobile, allergy/occasion selectors, deposit link, try/catch/finally save reset, auto-close."
+      "description": "Host-stand booking drawer with real-time 15-min pacing validation, international phone input, table combinations, and allergy notes.",
+      "type": "AppPage"
     },
     {
       "name": "Add Walk-In / Notify Request",
+      "title": "Hidden",
+      "pageTitle": "Add Walk-In / Notify Request",
+      "group": "Hidden",
       "route": "waitlist-drawer",
       "htmlFilePath": "pages/waitlist-drawer/waitlist-drawer.html",
-      "title": "Add Walk-In / Notify Request",
-      "group": "(Hidden)",
-      "icon": "fas fa-concierge-bell",
+      "icon": "fas fa-user-clock",
       "displayInMenu": false,
+      "displayOnMenu": false,
       "order": 13,
-      "developmentDetails": "Fast host-stand sliding drawer with <rapider-phone-input>, party size, zone preference, grounded AI wait-minute quote, and instant SWR list update on save."
+      "description": "Fast walk-in and Priority Notify waitlist drawer with grounded AI wait-time quote and SMS paging.",
+      "type": "AppPage"
     }
   ]
 }
