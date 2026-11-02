@@ -4,8 +4,8 @@
   "appName": "Rapider Restaurant Reservations & Table Management",
   "repository": "",
   "version": "1.0.0",
-  "lastBuildTimestamp": "2026-11-02T08:59:00.057Z",
-  "lastCommit": "715d3d5",
+  "lastBuildTimestamp": "2026-11-02T09:02:23.660Z",
+  "lastCommit": "8673d40",
   "summary": {
     "status": "qa_passed",
     "complianceRate": 100,
@@ -18,147 +18,147 @@
     "failedQaPasses": 0,
     "e2eSuitesCount": 0,
     "e2ePassedCount": 0,
-    "lastFullAudit": "2026-11-02T08:59:00.057Z",
+    "lastFullAudit": "2026-11-02T09:02:23.660Z",
     "lastE2ERun": null
   },
   "qaPasses": {
     "pass-01-routing": {
       "name": "pass-01-routing",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-02-swr": {
       "name": "pass-02-swr",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-03-data-models": {
       "name": "pass-03-data-models",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-04-modals": {
       "name": "pass-04-modals",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-05-drawers": {
       "name": "pass-05-drawers",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-06-responsive": {
       "name": "pass-06-responsive",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-07-themes": {
       "name": "pass-07-themes",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-08-notifications": {
       "name": "pass-08-notifications",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-09-payloads": {
       "name": "pass-09-payloads",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-10-components": {
       "name": "pass-10-components",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-11-e2e-expectations": {
       "name": "pass-11-e2e-expectations",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-12-asset-externalization": {
       "name": "pass-12-asset-externalization",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-13-manifest-sync": {
       "name": "pass-13-manifest-sync",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-14-ui-states": {
       "name": "pass-14-ui-states",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-15-security": {
       "name": "pass-15-security",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-16-accessibility": {
       "name": "pass-16-accessibility",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-17-input-formatting": {
       "name": "pass-17-input-formatting",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-18-kanban-list-views": {
       "name": "pass-18-kanban-list-views",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-19-ui-best-practices": {
       "name": "pass-19-ui-best-practices",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     },
     "pass-20-search-filters": {
       "name": "pass-20-search-filters",
       "status": "passed",
-      "lastRun": "2026-11-02T08:59:00.057Z",
+      "lastRun": "2026-11-02T09:02:23.660Z",
       "pagesCovered": 13,
       "issuesFound": 0
     }
@@ -168,8 +168,8 @@
       "pageName": "Shift & Cover Pulse",
       "route": "dashboard",
       "fileHash": "sha256:f7d226e5cc8634787fd09268bdb35bf1cad208c1e81622dfceb1aed1d2d7869e",
-      "lastModified": "2026-11-02T08:58:59.950Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.540Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 5,
@@ -189,8 +189,8 @@
       "pageName": "Live Floor & Seating Board",
       "route": "host-board",
       "fileHash": "sha256:e6afd3320729158f74fb140c9ab6a2f7cc26e08d02154776f3cd2fe6b0f6e554",
-      "lastModified": "2026-11-02T08:58:59.950Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.541Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 6,
@@ -210,8 +210,8 @@
       "pageName": "Walk-In & Notify Waitlist",
       "route": "waitlist",
       "fileHash": "sha256:5b8b95d92c0eac28b6d55023a900b9403c1a9a5c476b0a87ccedf6ffae9e8f34",
-      "lastModified": "2026-11-02T08:58:59.950Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.541Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 5,
@@ -231,8 +231,8 @@
       "pageName": "Reservation Book",
       "route": "reservations",
       "fileHash": "sha256:2c0c3a3c49142a00c506d14587de08b3143b793e77ed82d383a3d312cc29236d",
-      "lastModified": "2026-11-02T08:58:59.951Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.541Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 6,
@@ -252,8 +252,8 @@
       "pageName": "Diner 360 Guestbook",
       "route": "diner-directory",
       "fileHash": "sha256:4c6e3741ade42529ef0ad99d26e9ed850075cb59fa4f28ac0d33aa3c2ffdc127",
-      "lastModified": "2026-11-02T08:58:59.951Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.541Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 5,
@@ -273,8 +273,8 @@
       "pageName": "Prepaid Tickets & Tasting",
       "route": "experiences",
       "fileHash": "sha256:2cf047f113574f4ec5e2b265965d8b67a606b959e1ae88e1787e19dbac1d3b9e",
-      "lastModified": "2026-11-02T08:58:59.951Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.541Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 5,
@@ -294,8 +294,8 @@
       "pageName": "Floor Plans & Table Combos",
       "route": "floor-zones",
       "fileHash": "sha256:51cbc5ab852daa40e4d6f28e2c671dcbfb358f328e5c5197cd2cd5f22362ec04",
-      "lastModified": "2026-11-02T08:58:59.952Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.541Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 6,
@@ -315,8 +315,8 @@
       "pageName": "Shifts, Pacing & Policies",
       "route": "shifts-pacing",
       "fileHash": "sha256:47f04b3fa8f89ece3f76248185987ac5268e4d597046c3ff0b041fec456e3e48",
-      "lastModified": "2026-11-02T08:58:59.952Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.541Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 6,
@@ -336,8 +336,8 @@
       "pageName": "Pre-Shift Chit & RevPASH",
       "route": "preshift-analytics",
       "fileHash": "sha256:8912dbcc644c863db169b09883b1ec9535d28ce1631a56922464296058ce82bf",
-      "lastModified": "2026-11-02T08:58:59.953Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.542Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 7,
@@ -357,8 +357,8 @@
       "pageName": "Reservation & Seating 360",
       "route": "reservation-detail",
       "fileHash": "sha256:9bc422cb7b0eab0e2300cf2e536dd270996619759f722f521f1b17cbeaa680e9",
-      "lastModified": "2026-11-02T08:58:59.953Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.542Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 9,
@@ -378,8 +378,8 @@
       "pageName": "Diner 360 Profile",
       "route": "diner-detail",
       "fileHash": "sha256:8dc8d26dfcd00752a53eb04969934a5ed900e50cb4f1b472aa39f94afb9c237b",
-      "lastModified": "2026-11-02T08:58:59.953Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.542Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 5,
@@ -399,8 +399,8 @@
       "pageName": "Book / Edit Reservation",
       "route": "reservation-drawer",
       "fileHash": "sha256:a33a86b522d85f620142b8456e05312c2e663ad0eda3a6a858457ac0cd3c95b9",
-      "lastModified": "2026-11-02T08:58:59.954Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.542Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 6,
@@ -420,8 +420,8 @@
       "pageName": "Add Walk-In / Notify Request",
       "route": "waitlist-drawer",
       "fileHash": "sha256:fe7f3b78b9f81717ebe04b112bf2129be9b4a9f78346e7e9a2f6e16e549c8143",
-      "lastModified": "2026-11-02T08:58:59.954Z",
-      "lastTested": "2026-11-02T08:59:00.057Z",
+      "lastModified": "2026-11-02T09:02:23.542Z",
+      "lastTested": "2026-11-02T09:02:23.660Z",
       "status": "passed",
       "metrics": {
         "buttonsTotal": 6,
@@ -445,6 +445,16 @@
     "suites": []
   },
   "history": [
+    {
+      "timestamp": "2026-11-02T09:02:23.660Z",
+      "action": "qa_full_audit",
+      "commit": "8673d40",
+      "complianceRate": 100,
+      "pagesAudited": 13,
+      "status": "passed",
+      "agent": "Antigravity",
+      "details": "13/13 pages passed. Completed 20/20 QA passes."
+    },
     {
       "timestamp": "2026-11-02T08:59:00.057Z",
       "action": "qa_full_audit",
